@@ -1,17 +1,34 @@
-# Embedded Systems FPGA Review Labs
+<p align="center">
+  <img src="https://raw.githubusercontent.com/lhlizdabezt/embedded-systems-fpga-review-labs/main/assets/fpga-review-motion.svg" alt="Animated FPGA SoPC review pipeline" />
+</p>
 
-Professional review workspace for Embedded Systems coursework, focused on SoPC design on Intel/Altera FPGA platforms. The repository combines Quartus Prime projects, Platform Designer/Qsys systems, Verilog custom IP, Nios II C applications, and a structured Typst review document for the main exam topics.
+<h1 align="center">⚡ Embedded Systems FPGA Review Labs ⚡</h1>
 
-## Scope
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=700&size=24&pause=900&color=2563EB&center=true&vCenter=true&width=900&lines=Verilog+Custom+IP+%7C+Avalon-MM+SoPC+%7C+Nios+II+C;Quartus+Prime+%7C+Platform+Designer+%7C+PIO+Timer+DMA;Professional+FPGA%2FEmbedded+Systems+Review+Workspace" alt="Animated FPGA review headline" />
+</p>
 
-This repository is organized around four practical themes:
+<p align="center">
+  <a href="https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/Release-v1.0.0-0f766e?style=for-the-badge" alt="Release v1.0.0" /></a>
+  <img src="https://img.shields.io/badge/FPGA-DE10--Standard-2563EB?style=for-the-badge" alt="DE10-Standard FPGA" />
+  <img src="https://img.shields.io/badge/Bus-Avalon--MM-D95319?style=for-the-badge" alt="Avalon-MM" />
+  <img src="https://img.shields.io/badge/Firmware-Nios%20II%20C-334155?style=for-the-badge" alt="Nios II C" />
+  <img src="https://img.shields.io/badge/Docs-Typst-239DAD?style=for-the-badge" alt="Typst documentation" />
+</p>
 
-- Master, Bus, and Slave concepts in Avalon-MM based SoPC systems.
-- End-to-end embedded-system design flow with Quartus Prime, Platform Designer/Qsys, Nios II SBT, and FPGA programming.
-- Practical lab projects for PIO-driven HEX displays, custom HEX IP, timer-based clock logic, and DMA transfer.
-- Review notes and compiled study material for the Embedded Systems course.
+> Professional review workspace for Embedded Systems coursework, focused on SoPC design on Intel/Altera FPGA platforms. The repository turns lab folders into a readable engineering artifact: source code, hardware systems, firmware examples, and a structured review document.
 
-## Repository Structure
+## 🧭 Engineering Signal
+
+| What this proves | Evidence in repo |
+| --- | --- |
+| FPGA/SoPC workflow | Quartus `.qpf/.qsf`, Platform Designer `.qsys`, generated system wrappers |
+| Hardware/software integration | Nios II C apps using memory-mapped IO through `IORD` / `IOWR` |
+| Custom IP design | Verilog Avalon-MM slave blocks, HEX display drivers, switch/key register interfaces |
+| Embedded timing/control | PIO, timer interrupt flow, setup modes, clock logic, DMA transfer practice |
+| Documentation maturity | Typst review source plus compiled `DeCuong_OnTap_LuongHaiLong.pdf` |
+
+## 📂 Repository Map
 
 | Path | Purpose |
 | --- | --- |
@@ -22,33 +39,41 @@ This repository is organized around four practical themes:
 | `DeCuongOnTap_HTNhung/` | Typst source for the structured Embedded Systems review document. |
 | `DeCuong_OnTap_LuongHaiLong.pdf` | Exported review document prepared for study and submission reference. |
 
-## Technical Highlights
+## 🛠️ Technical Stack
 
-- Designs Avalon-MM systems where Nios II acts as the main bus master.
-- Builds and integrates custom Avalon-MM slave IP blocks in Verilog.
-- Uses C applications to access memory-mapped registers through `IORD` and `IOWR`.
-- Demonstrates polling, timer interrupt, switch-controlled setup modes, and DMA interrupt handling.
-- Keeps source files, project configuration, and review notes versioned while excluding generated build caches and bitstreams.
+<p align="center">
+  <img src="https://img.shields.io/badge/Intel%20Quartus-Prime-2563EB?style=flat-square" alt="Intel Quartus Prime" />
+  <img src="https://img.shields.io/badge/Platform%20Designer-Qsys-0f766e?style=flat-square" alt="Platform Designer Qsys" />
+  <img src="https://img.shields.io/badge/Verilog-Custom%20IP-334155?style=flat-square" alt="Verilog custom IP" />
+  <img src="https://img.shields.io/badge/C-Nios%20II%20SBT-D95319?style=flat-square" alt="Nios II Software Build Tools" />
+  <img src="https://img.shields.io/badge/Typst-Review%20Notes-239DAD?style=flat-square" alt="Typst review notes" />
+</p>
 
-## Toolchain
+- **Hardware design:** Avalon-MM bus systems, PIO, timer, DMA, custom slave peripherals.
+- **Firmware:** bare-metal C applications for register access, polling, interrupt handling, and display control.
+- **Documentation:** review notes aligned with Master/Bus/Slave concepts, SoPC flow, and lab-level implementation details.
+- **Portfolio practice:** generated caches and bitstreams are excluded so the repo stays reviewable and reproducible.
 
-- Intel Quartus Prime
-- Platform Designer / Qsys
-- Nios II Software Build Tools
-- Verilog and SystemVerilog
-- C for embedded bare-metal software
-- Typst for technical documentation
+## 🚀 How To Rebuild Locally
 
-## How To Use
-
-1. Open the relevant `.qpf` project in Quartus Prime.
-2. Inspect or regenerate the `.qsys` system with Platform Designer.
-3. Rebuild the Quartus project to generate FPGA output files locally.
+1. Open the relevant `.qpf` project in Intel Quartus Prime.
+2. Inspect or regenerate the `.qsys` design with Platform Designer/Qsys.
+3. Rebuild the Quartus project and regenerate output files locally.
 4. Regenerate the Nios II BSP from the current hardware system.
-5. Build and run the C application from the corresponding `Software/` folder.
+5. Build and run the matching C application inside the corresponding `Software/` folder.
 
-Generated folders such as `db/`, `incremental_db/`, `output_files/`, BSP build products, and bitstream files are intentionally excluded from Git. They should be recreated locally by the FPGA toolchain.
+Generated folders such as `db/`, `incremental_db/`, `output_files/`, BSP build products, and bitstream files are intentionally excluded from Git. Recreate them locally with the FPGA toolchain.
 
-## Author Bio
+## 🏷️ Release
 
-**Luong Hai Long** is an Electronics and Telecommunications student focused on embedded systems, FPGA/Verilog design, C/C++, Python, artificial intelligence, Kaggle workflows, and practical hardware-software integration.
+- **`v1.0.0`** - initial professional portfolio release for the FPGA/SoPC review labs.
+- Includes Quartus/Platform Designer source structure, Verilog IP, Nios II C examples, Typst review source, and the exported review PDF.
+
+## 👤 Author
+
+**Lương Hải Long** - Electronics and Telecommunications student at HCMUS, focused on Verilog/FPGA design, embedded systems, C/C++, Python automation, AI, Kaggle, IPYNB notebooks, and practical hardware-software integration.
+
+<p align="center">
+  <b>⚙️ FPGA/SoPC • Embedded Systems • Digital Logic • Documentation-first Engineering</b><br />
+  <samp>From lab folders to reviewable engineering evidence.</samp>
+</p>
