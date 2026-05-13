@@ -1,0 +1,18 @@
+* text=auto
+
+*.c text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.v text eol=lf
+*.sv text eol=lf
+*.vhd text eol=lf
+*.tcl text eol=lf
+*.qsys text eol=lf
+*.qsf text eol=lf
+*.qpf text eol=lf
+*.sopcinfo text eol=lf
+*.typ text eol=lf
+*.bib text eol=lf
+*.md text eol=lf
+
+*.pdf binary
