@@ -25,10 +25,9 @@
       .small { font: 650 16px Segoe UI, Arial, sans-serif; fill: #a7c7e7; letter-spacing: 0; }
       .mono { font: 700 15px Consolas, monospace; fill: #a7f3d0; }
       .chip { fill: rgba(15, 23, 42, 0.88); stroke: #38bdf8; stroke-width: 1.2; }
-      .bus { stroke: url(#pulse); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 18 14; animation: dash 2.4s linear infinite; filter: url(#glow); }
+      .bus { stroke: url(#pulse); stroke-width: 5; stroke-linecap: round; filter: url(#glow); }
       .spark { fill: #fbbf24; filter: url(#glow); animation: blink 1.8s ease-in-out infinite; }
       .node { fill: #0f766e; stroke: #5eead4; stroke-width: 2; animation: breathe 2.6s ease-in-out infinite; }
-      @keyframes dash { to { stroke-dashoffset: -64; } }
       @keyframes blink { 0%, 100% { opacity: .35; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.12); } }
       @keyframes breathe { 0%, 100% { opacity: .85; } 50% { opacity: 1; } }
     </style>
