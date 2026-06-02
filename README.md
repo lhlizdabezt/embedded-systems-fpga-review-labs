@@ -1,117 +1,65 @@
-# ⚡ Lab ôn tập Hệ thống nhúng FPGA/SoPC
+# FPGA and SoPC Review Labs
 
 <p align="center">
-  <img src="assets/fpga-review-motion.svg" alt="Banner chuyển động cho bộ lab FPGA SoPC" />
+  <a href="https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest"><img src="https://img.shields.io/github/v/release/lhlizdabezt/embedded-systems-fpga-review-labs?style=for-the-badge&logo=github&label=Release" alt="Latest release for embedded-systems-fpga-review-labs" /></a>
+  <a href="https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/tags"><img src="https://img.shields.io/github/v/tag/lhlizdabezt/embedded-systems-fpga-review-labs?style=for-the-badge&logo=git&label=Tag" alt="Latest tag for embedded-systems-fpga-review-labs" /></a>
+  <img src="https://img.shields.io/badge/Portfolio-English%20review%20ready-0f766e?style=for-the-badge" alt="English portfolio ready" />
 </p>
 
-<p align="center">
-  <img width="780" src="assets/fpga-review-flow.gif" alt="GIF mô phỏng luồng Verilog IP, Avalon-MM, Platform Designer, Nios II C, PIO, timer, DMA và HEX" />
-</p>
+## Overview
 
-<p align="center">
-  <a href="https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest"><img src="https://img.shields.io/github/v/release/lhlizdabezt/embedded-systems-fpga-review-labs?style=for-the-badge&label=Release&color=0f766e" alt="Bản phát hành mới nhất" /></a>
-  <a href="https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/tags"><img src="https://img.shields.io/github/v/tag/lhlizdabezt/embedded-systems-fpga-review-labs?style=for-the-badge&label=Tag&color=2563eb" alt="Tag Git mới nhất" /></a>
-  <img src="https://img.shields.io/badge/FPGA-DE10--Standard-D95319?style=for-the-badge" alt="DE10 Standard FPGA" />
-  <img src="https://img.shields.io/badge/Bus-Avalon--MM-334155?style=for-the-badge" alt="Avalon MM" />
-  <img src="https://img.shields.io/badge/Docs-Typst-239DAD?style=for-the-badge" alt="Tài liệu Typst" />
-</p>
+This repository collects FPGA/SoPC lab evidence around Quartus, Platform Designer, Avalon-MM custom IP, Nios II C and peripheral integration.
 
-Repo này đóng gói lại bộ lab ôn tập **Hệ thống nhúng FPGA/SoPC** theo hướng có thể review nhanh: có project Quartus, Platform Designer/Qsys, Verilog custom IP, Avalon-MM, Nios II C, PIO, timer, DMA, tài liệu Typst và release để người đọc kiểm tra được bằng chứng thay vì chỉ thấy một thư mục nộp bài.
+| Field | Details |
+|---|---|
+| Repository | [embedded-systems-fpga-review-labs](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs) |
+| Portfolio category | FPGA/SoPC lab and review repository |
+| Primary stack | Verilog, Avalon-MM, Quartus, Platform Designer/Qsys, Nios II C, PIO, timer, DMA, Typst. |
+| Latest release | [GitHub Releases](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest) |
+| Tags | [Version tags](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/tags) |
+| Owner profile | [Luong Hai Long](https://github.com/lhlizdabezt) |
 
-Phạm vi đúng của repo là **lab học thuật và ôn tập kỹ thuật**. Nội dung thể hiện cách tôi đọc, tổ chức và trình bày lại luồng phần cứng/phần mềm trên FPGA; không mô tả đây là sản phẩm thương mại hay hệ thống production.
+## Reviewer Map
 
-## Điểm đọc nhanh
+| What to Review | Where to Look | Why It Matters |
+|---|---|---|
+| Technical scope | This README and source tree | Gives a quick, bounded reading path before opening every file |
+| Evidence assets | Release page and top-level project files | Shows what can be downloaded or inspected quickly |
+| Implementation material | Source folders, scripts, notebooks or design files | Connects the portfolio claim to real project artifacts |
+| Version history | Tags and release notes | Makes the repository easier to audit over time |
 
-| Năng lực cần chứng minh | Bằng chứng trong repo | Giá trị khi HR/kỹ sư đọc |
-| --- | --- | --- |
-| Thiết kế FPGA/SoPC | `.qpf`, `.qsf`, `.qsys`, wrapper Verilog và file sinh từ Platform Designer | Cho thấy khả năng dựng hệ thống trên FPGA, không chỉ viết module rời |
-| Giao tiếp Avalon-MM | Custom IP, PIO, timer, DMA, thanh ghi và memory-mapped I/O | Thể hiện tư duy nối phần cứng với phần mềm |
-| Firmware Nios II C | `source.c`, `hello_world.c`, `IORD`, `IOWR`, timer và DMA | Có dấu vết truy cập ngoại vi từ C trên SoPC |
-| Tài liệu kỹ thuật | Source Typst và PDF ôn tập | Biết chuyển lab thành tài liệu có cấu trúc, dễ kiểm tra |
-| Portfolio GitHub | README, visual tự host, release, tag, topics và source snapshot | Repo có thể mở ra đọc, đánh giá và truy nguồn ngay |
+## Evidence Highlights
 
-## Bản đồ thư mục
+- Verilog Avalon-MM custom IP and Platform Designer/Qsys integration.
+- Nios II C, PIO, timer and DMA lab coverage.
+- HEX display and hardware/software integration exercises.
+- Typst notes and reviewer-oriented documentation.
 
-| Đường dẫn | Vai trò |
-| --- | --- |
-| `de1/` | Lab PIO, switch, LED 7 đoạn và phần mềm Nios II C tương ứng |
-| `de2/` | Lab mở rộng với custom register, key reader, switch input và HEX output |
-| `Bai7/` | Lab timer/custom HEX IP, Avalon-MM, Nios II và hiển thị sáu HEX |
-| `Bai8_new/` | Lab DMA với bộ nhớ on-chip, đường truyền dữ liệu và firmware Nios II |
-| `DeCuongOnTap_HTNhung/` | Source Typst cho đề cương ôn tập Hệ thống nhúng |
-| `DeCuong_OnTap_LuongHaiLong.pdf` | Bản PDF xuất ra để học, nộp và đối chiếu |
-| `assets/` | Visual tự host cho README và profile GitHub |
-| `scripts/render_fpga_review_flow.py` | Script dựng lại GIF flow để sửa motion asset có kiểm soát |
+## Repository Structure
 
-## Luồng kỹ thuật
+| Path | Purpose |
+|---|---|
+| `assets/` | Top-level directory included in the repository |
+| `Bai7/` | Top-level directory included in the repository |
+| `Bai8_new/` | Top-level directory included in the repository |
+| `de1/` | Top-level directory included in the repository |
+| `de2/` | Top-level directory included in the repository |
+| `DeCuongOnTap_HTNhung/` | Top-level directory included in the repository |
+| `scripts/` | Top-level directory included in the repository |
+| `DeCuong_OnTap_LuongHaiLong.pdf` | Top-level file included in the repository |
 
-```mermaid
-flowchart LR
-  A["Verilog custom IP"] --> B["Avalon-MM slave"]
-  B --> C["Platform Designer / Qsys"]
-  C --> D["Nios II processor"]
-  D --> E["C firmware"]
-  E --> F["PIO / Timer / DMA"]
-  F --> G["LED / HEX output"]
-  C --> H["system.sopcinfo"]
-  H --> I["BSP và system.h"]
-  J["Typst notes"] --> K["PDF ôn tập"]
-```
+## Scope and Boundaries
 
-## Bằng chứng trong mã
+Lab and review repository for learning and interview evidence; it is not a production FPGA IP library.
 
-| Nhóm | File/thư mục | Nội dung đáng xem |
-| --- | --- | --- |
-| Verilog IP | `de2/*.v`, `Bai7/*.v`, `Bai8_new/*.v` | Thanh ghi, đọc phím, đọc switch, điều khiển HEX và wrapper hệ thống |
-| Component metadata | `*_hw.tcl` | Định nghĩa interface, signal và cấu hình IP cho Platform Designer |
-| Qsys/Platform Designer | `system.qsys`, `system.sopcinfo` | Cấu hình CPU, bus, ngoại vi, địa chỉ và kết nối master/slave |
-| Firmware | `Software/**/source.c`, `hello_world.c` | Truy cập thanh ghi bằng C, điều khiển hiển thị, timer và DMA |
-| Tài liệu | `DeCuongOnTap_HTNhung/src/*.typ` | Ghi chú về master/bus/slave, SoPC flow, lỗi thường gặp và checklist ôn tập |
+## Role and Portfolio Context
 
-## Cách dựng lại
+Luong Hai Long maintains this as structured FPGA/SoPC evidence in the engineering portfolio.
 
-| Bước | Thao tác |
-| --- | --- |
-| 1 | Mở project tương ứng trong Intel Quartus Prime Lite |
-| 2 | Kiểm tra cấu hình trong Platform Designer/Qsys và generate lại HDL nếu đã đổi hệ thống |
-| 3 | Build project Quartus để tạo bitstream local |
-| 4 | Regenerate BSP cho Nios II theo phần cứng hiện tại |
-| 5 | Build firmware trong thư mục `Software/` tương ứng |
-| 6 | Nạp xuống board, kiểm tra switch/key/timer/DMA/HEX theo từng bài |
+## Release and Tagging Notes
 
-Các thư mục sinh bởi toolchain như `db/`, `incremental_db/`, `output_files/`, BSP output, bitstream và cache Quartus không nên đưa vào Git nếu không cần cho release. Repo ưu tiên giữ source, cấu hình, tài liệu và visual phục vụ review.
+This repository is maintained as part of an English-facing engineering portfolio. Releases and tags are used to preserve reviewable snapshots of the project, including source state, documentation updates and any available visual or report assets.
 
-## Release và liên kết
+## Writing Standard
 
-| Mục | Liên kết |
-| --- | --- |
-| Repo GitHub | [lhlizdabezt/embedded-systems-fpga-review-labs](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs) |
-| Release mới nhất | [GitHub Releases](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest) |
-| Tags | [Git tags](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/tags) |
-| PDF ôn tập | [`DeCuong_OnTap_LuongHaiLong.pdf`](./DeCuong_OnTap_LuongHaiLong.pdf) |
-| Source Typst | [`DeCuongOnTap_HTNhung/`](./DeCuongOnTap_HTNhung/) |
-| Profile chính | [github.com/lhlizdabezt](https://github.com/lhlizdabezt) |
-
-## Metadata GitHub
-
-| Trường | Nội dung |
-| --- | --- |
-| Mô tả repo | Bộ lab FPGA/SoPC HCMUS: Quartus/Platform Designer, Verilog Avalon-MM IP, Nios II C, PIO, timer, DMA, HEX LED và ghi chú Typst. |
-| Topics chính | `fpga`, `verilog`, `sopc`, `avalon-mm`, `nios-ii`, `platform-designer`, `intel-quartus`, `de10-standard`, `embedded-c`, `timer`, `dma`, `typst` |
-| Release hiện tại | `v1.2.0` đóng gói README tiếng Việt, SVG/GIF tự host, PDF ôn tập và source snapshot |
-
-## Tác giả
-
-| Trường | Thông tin |
-| --- | --- |
-| Họ tên | **Lương Hải Long** |
-| Mã sinh viên | **22207056** |
-| Ngành | Điện tử Viễn thông |
-| Trường | Trường Đại học Khoa học Tự nhiên, Đại học Quốc gia Thành phố Hồ Chí Minh |
-| Trọng tâm kỹ thuật | FPGA/SoC, Verilog, C/C++, Python, hệ thống nhúng, AI, Kaggle, IPYNB |
-| GitHub | [github.com/lhlizdabezt](https://github.com/lhlizdabezt) |
-| LinkedIn | [linkedin.com/in/lhlizdabezt](https://www.linkedin.com/in/lhlizdabezt) |
-
-## Ghi chú học thuật
-
-Repo này phục vụ ôn tập, lưu trữ bài thực hành và trình bày năng lực kỹ thuật. Source và tài liệu được giữ lại để truy vết quá trình học; khi dùng lại trong môn học hoặc báo cáo, cần đối chiếu với yêu cầu chính thức của giảng viên và môi trường Quartus/Nios II đang dùng.
+The README follows an evidence-first style: direct technical nouns, clear project boundaries, release-backed artifacts and no inflated claims beyond what the repository can support.
