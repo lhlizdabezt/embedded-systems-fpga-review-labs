@@ -1,17 +1,18 @@
-# English Portfolio Refresh
-
-## Main updates
-
-- Rewrote the public README in English for HR and engineering review.
-- Standardized the repository summary, reviewer map, evidence highlights, scope boundaries and release/tag links.
-- Preserved an evidence-first tone: clear technical nouns, bounded claims and no production ownership beyond the repository material.
-
-## Repository evidence
-
-- Verilog Avalon-MM custom IP and Platform Designer/Qsys integration.
-- Nios II C, PIO, timer and DMA lab coverage.
-- HEX display and hardware/software integration exercises.
+# English Visual Portfolio Refresh - 2026-06-02
 
 ## Scope
 
-Lab and review repository for learning and interview evidence; it is not a production FPGA IP library.
+This refresh keeps `embedded-systems-fpga-review-labs` aligned with an English-facing engineering portfolio for HR and technical review.
+
+## Changes
+
+- Added an ASCII-safe animated SVG visual under `assets/portfolio-motion.svg`.
+- Embedded the visual in `README.md` for immediate GitHub rendering.
+- Standardized Markdown and binary asset handling through `.gitattributes`.
+- Kept the repository description evidence-first and scoped to: FPGA/SoPC lab evidence.
+
+## Review Context
+
+Primary stack: Quartus, Platform Designer, Verilog, Avalon-MM, Nios II C, DMA.
+
+The repository remains bounded to its real artifacts and does not claim production ownership beyond what the source tree, reports, code or release assets can support.
