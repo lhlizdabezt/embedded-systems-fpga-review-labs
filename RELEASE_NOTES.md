@@ -1,4 +1,4 @@
-# v1.2.1 - Evidence-Led Lab Guide
+# v1.2.2 - Compiled Review and Source Package
 
 ## Changes
 
@@ -7,6 +7,7 @@
 - Added the generated Quartus 18.1 context and version-migration warning.
 - Removed duplicate reviewer-card placement and unsupported style labels.
 - Replaced remaining non-English SVG copy with ASCII-safe English.
+- Added direct release downloads and packaged the compiled 70-page review notes with the full tracked lab source.
 
 ## Verification
 

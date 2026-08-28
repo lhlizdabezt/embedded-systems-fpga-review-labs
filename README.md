@@ -69,6 +69,16 @@ typst compile --root . DeCuongOnTap_HTNhung/main.typ Embedded-Systems-FPGA-Revie
 
 The faculty-facing review material remains in Vietnamese. This README and all repository SVG labels use US English for public navigation without altering the submitted academic source.
 
+## Release Downloads
+
+| Artifact | Purpose |
+|---|---|
+| [Compiled review notes](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest/download/Embedded-Systems-FPGA-Review.pdf) | 70-page FPGA and SoPC review document |
+| [Source snapshot](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest/download/embedded-systems-fpga-review-labs-source-v1.2.2.zip) | Full tracked Verilog, Qsys, Quartus, Nios II C, and Typst source |
+| [Hardware-software flow GIF](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest/download/fpga-review-flow.gif) | Animated review sequence |
+| [Review map SVG](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest/download/fpga-review-motion.svg) | Stable English lab map |
+| [Portfolio SVG](https://github.com/lhlizdabezt/embedded-systems-fpga-review-labs/releases/latest/download/portfolio-motion.svg) | Stable profile embed |
+
 ## Review checklist
 
 1. Match each C application to its `.sopcinfo` and Qsys system.
