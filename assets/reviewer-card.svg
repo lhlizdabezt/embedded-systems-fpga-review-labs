@@ -24,6 +24,6 @@
   <text class="title" x="70" y="125"><tspan x="70" dy="0">Embedded Systems and FPGA Review</tspan><tspan x="70" dy="38">Labs</tspan></text>
   <text class="body" x="70" y="220"><tspan x="70" dy="0">Verilog, custom IP, Avalon-MM, and Nios II review evidence.</tspan></text>
   <g class="chip" style="animation-delay:0.00s"><rect x="70" y="272" width="120" height="34" rx="8"/><text x="86" y="295">fpga</text></g> <g class="chip" style="animation-delay:0.16s"><rect x="204" y="272" width="120" height="34" rx="8"/><text x="220" y="295">verilog</text></g> <g class="chip" style="animation-delay:0.32s"><rect x="338" y="272" width="120" height="34" rx="8"/><text x="354" y="295">sopc</text></g> <g class="chip" style="animation-delay:0.48s"><rect x="472" y="272" width="120" height="34" rx="8"/><text x="488" y="295">nios-ii</text></g>
-  <text x="920" y="304" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">IEEE style</text>
-  <text x="920" y="330" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="500">English reviewer guide</text>
+  <text x="920" y="304" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Quartus 18.1</text>
+  <text x="920" y="330" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="500">Verilog and Nios II labs</text>
 </svg>

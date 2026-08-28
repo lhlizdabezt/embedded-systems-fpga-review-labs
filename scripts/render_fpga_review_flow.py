@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Iterable
-
 from PIL import Image, ImageDraw, ImageFont
 
 
@@ -14,7 +12,6 @@ FRAMES = 48
 COLORS = {
     "bg0": (4, 18, 35),
     "bg1": (12, 70, 84),
-    "grid": (95, 212, 255, 52),
     "panel": (16, 29, 56),
     "text": (246, 248, 255),
     "muted": (190, 208, 225),
@@ -24,7 +21,6 @@ COLORS = {
     "yellow": (255, 205, 65),
     "pink": (255, 91, 136),
     "violet": (169, 130, 255),
-    "line": (255, 225, 92),
     "mono": (182, 255, 223),
 }
 
@@ -68,10 +64,6 @@ def draw_background(draw: ImageDraw.ImageDraw) -> None:
         g = lerp(COLORS["bg0"][1], COLORS["bg1"][1], t)
         b = lerp(COLORS["bg0"][2], COLORS["bg1"][2], t)
         draw.line((0, y, WIDTH, y), fill=(r, g, b))
-    for x in range(0, WIDTH, 92):
-        draw.line((x, 0, x, HEIGHT), fill=COLORS["grid"], width=1)
-    for y in range(0, HEIGHT, 48):
-        draw.line((0, y, WIDTH, y), fill=COLORS["grid"], width=1)
 
 
 def center_text(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], text: str, fnt: ImageFont.FreeTypeFont) -> None:
@@ -82,61 +74,25 @@ def center_text(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], text:
     draw.text((x, y), text, font=fnt, fill=COLORS["text"])
 
 
-def draw_polyline(draw: ImageDraw.ImageDraw, points: Iterable[tuple[int, int]], color: tuple[int, int, int], width: int = 4) -> None:
-    pts = list(points)
-    for a, b in zip(pts, pts[1:]):
-        draw.line((*a, *b), fill=color, width=width)
-
-
-def point_on_path(points: list[tuple[int, int]], t: float) -> tuple[int, int]:
-    segments = []
-    total = 0.0
-    for a, b in zip(points, points[1:]):
-        length = ((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2) ** 0.5
-        segments.append((a, b, length))
-        total += length
-    target = (t % 1.0) * total
-    seen = 0.0
-    for a, b, length in segments:
-        if seen + length >= target:
-            local = (target - seen) / max(length, 1)
-            return lerp(a[0], b[0], local), lerp(a[1], b[1], local)
-        seen += length
-    return points[-1]
-
-
 def frame(index: int) -> Image.Image:
     img = Image.new("RGB", (WIDTH, HEIGHT), COLORS["bg0"])
     draw = ImageDraw.Draw(img)
     draw_background(draw)
 
-    draw.text((34, 30), "Luồng ôn tập FPGA/SoPC trên DE10-Standard", font=FONT_TITLE, fill=COLORS["text"])
-    draw.text((34, 66), "Quartus -> Platform Designer -> Avalon-MM -> Nios II C -> PIO / Timer / DMA / HEX", font=FONT_SUB, fill=COLORS["muted"])
-
-    main_y = 146
-    main_points = [(22, main_y)]
-    for _, x, _, w, _ in NODES:
-        main_points.extend([(x - 8, main_y), (x + w + 8, main_y)])
-    main_points.append((988, main_y))
-    draw_polyline(draw, main_points, COLORS["line"], 4)
-
-    doc_path = [(138, 244), (272, 244), (272, 220), (454, 220), (454, 244), (704, 244), (704, 220), (914, 220)]
-    draw_polyline(draw, doc_path, COLORS["cyan"], 3)
-    draw.text((54, 256), "Tài liệu Typst, README, release và ghi chú kiểm tra", font=FONT_SMALL, fill=COLORS["muted"])
-
-    progress = index / FRAMES
-    dot = point_on_path(main_points, progress)
-    draw.ellipse((dot[0] - 8, dot[1] - 8, dot[0] + 8, dot[1] + 8), fill=(255, 246, 168), outline=COLORS["text"], width=1)
-    dot2 = point_on_path(doc_path, progress + 0.38)
-    draw.rounded_rectangle((dot2[0] - 18, dot2[1] - 8, dot2[0] + 18, dot2[1] + 8), radius=8, fill=COLORS["cyan"], outline=(165, 255, 255), width=1)
+    draw.text((34, 30), "FPGA and SoPC Review Labs", font=FONT_TITLE, fill=COLORS["text"])
+    draw.text((34, 66), "Verilog | Platform Designer | Avalon-MM | Nios II C | Typst", font=FONT_SUB, fill=COLORS["muted"])
 
     for label, x, y, w, border in NODES:
-        draw.rounded_rectangle((x + 4, y + 5, x + w + 4, y + 58), radius=12, fill=(0, 0, 0, 84))
-        draw.rounded_rectangle((x, y, x + w, y + 53), radius=12, fill=COLORS["panel"], outline=border, width=3)
-        center_text(draw, (x, y, x + w, y + 53), label, FONT_LABEL)
+        shift = -3 if ((index // 8) + (x // 100)) % 2 else 0
+        draw.rounded_rectangle((x + 4, y + 5 + shift, x + w + 4, y + 58 + shift), radius=12, fill=(0, 0, 0, 84))
+        draw.rounded_rectangle((x, y + shift, x + w, y + 53 + shift), radius=12, fill=COLORS["panel"], outline=border, width=3)
+        center_text(draw, (x, y + shift, x + w, y + 53 + shift), label, FONT_LABEL)
+
+    draw.rounded_rectangle((80, 218, 920, 264), radius=12, fill=(8, 22, 43), outline=COLORS["cyan"], width=2)
+    center_text(draw, (80, 218, 920, 264), "Tracked evidence: .v | .qsys | .sopcinfo | source.c | Typst PDF", FONT_SMALL)
 
     draw.rounded_rectangle((34, 294, 966, 326), radius=10, fill=(1, 7, 22), outline=(18, 28, 58), width=2)
-    draw.text((54, 302), "BẰNG CHỨNG: .v | .qsys | .sopcinfo | source.c | Typst PDF | release assets", font=FONT_MONO, fill=COLORS["mono"])
+    draw.text((54, 302), "Quartus 18.1 context | DE10-Standard course labs | release-backed review", font=FONT_MONO, fill=COLORS["mono"])
     return img
 
 
